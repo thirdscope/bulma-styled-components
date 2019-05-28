@@ -16,5 +16,8 @@ export default {
     })
   ],
   external: ["react", "styled-components"],
-  output: [{ file: pkg.main, format: "cjs" }]
+  output: [
+    { file: pkg.main, format: "cjs" },
+    { file: pkg.module, format: "es" }
+  ]
 };

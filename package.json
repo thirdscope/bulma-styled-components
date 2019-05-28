@@ -3,6 +3,7 @@
   "version": "0.0.0-alpha.1",
   "description": "A Styled Components implementation of Bulma Css for React.",
   "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "scripts": {
     "build": "rollup -c",
     "postbuild": "tsc",

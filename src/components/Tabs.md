@@ -1,6 +1,6 @@
 # Simple
 ``` react
-<BulmaStyledTheme>
+<StyledBulmaTheme>
   <Tabs>
     <ul>
       <li className="is-active"><a href="/">Pictures</a></li>
@@ -9,11 +9,11 @@
       <li><a href="/">Documents</a></li>
     </ul>
   </Tabs>
-</BulmaStyledTheme>
+</StyledBulmaTheme>
 ```
 # Boxed
 ``` react
-<BulmaStyledTheme>
+<StyledBulmaTheme>
   <Tabs className="is-boxed">
     <ul>
       <li className="is-active"><a href="/">Pictures</a></li>
@@ -22,11 +22,11 @@
       <li><a href="/">Documents</a></li>
     </ul>
   </Tabs>
-</BulmaStyledTheme>
+</StyledBulmaTheme>
 ```
 # Toggle
 ``` react
-<BulmaStyledTheme>
+<StyledBulmaTheme>
   <Tabs className="is-toggle">
     <ul>
       <li className="is-active"><a href="/">Pictures</a></li>
@@ -35,11 +35,11 @@
       <li><a href="/">Documents</a></li>
     </ul>
   </Tabs>
-</BulmaStyledTheme>
+</StyledBulmaTheme>
 ```
 # Rouned Toggle
 ``` react
-<BulmaStyledTheme>
+<StyledBulmaTheme>
   <Tabs className="is-toggle is-toggle-rounded">
     <ul>
       <li className="is-active"><a href="/">Pictures</a></li>
@@ -48,5 +48,5 @@
       <li><a href="/">Documents</a></li>
     </ul>
   </Tabs>
-</BulmaStyledTheme>
+</StyledBulmaTheme>
 ```

@@ -1,5 +1,5 @@
 ``` react
-<BulmaStyledTheme>
+<StyledBulmaTheme>
   <Hero className="is-primary is-large is-bold">
     <Hero.Head>
       <Navbar>
@@ -67,5 +67,5 @@
       </Tabs>
     </Hero.Foot>
   </Hero>
-</BulmaStyledTheme>
+</StyledBulmaTheme>
 ```

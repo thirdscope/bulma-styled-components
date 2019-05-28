@@ -5,11 +5,11 @@ import minireset from './minireset'
 import getGeneric from './generic'
 import Helpers from './helper'
 
-const BulmaStyledContainer = styled.div`
+const StyledBulmaContainer = styled.div`
   ${Helpers}
 `
 
-class BulmaStyledTheme extends React.PureComponent {
+class StyledBulmaTheme extends React.PureComponent {
   static propTypes = {
     overrides: () => {},
   }
@@ -32,10 +32,10 @@ class BulmaStyledTheme extends React.PureComponent {
     const { overrides, ...props } = this.props
     return (
       <ThemeProvider theme={this.vars}>
-        <BulmaStyledContainer {...props} />
+        <StyledBulmaContainer {...props} />
       </ThemeProvider>
     )
   }
 }
 
-export default BulmaStyledTheme
+export default StyledBulmaTheme

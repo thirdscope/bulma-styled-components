@@ -5,14 +5,14 @@ const TempCol = props => (
     <div {...props} className="has-background-primary has-text-white has-text-centered" />
   </Column>
 );
-<BulmaStyledTheme>
+<StyledBulmaTheme>
   <Columns>
     <TempCol>Column</TempCol>
     <TempCol>Column</TempCol>
     <TempCol>Column</TempCol>
     <TempCol>Column</TempCol>
   </Columns>
-</BulmaStyledTheme>
+</StyledBulmaTheme>
 ```
 #### Sizes
 ``` react
@@ -21,7 +21,7 @@ const TempCol = props => (
     <div {...props} className="has-background-primary has-text-white has-text-centered" />
   </Column>
 );
-<BulmaStyledTheme>
+<StyledBulmaTheme>
   <Columns>
     <TempCol className="is-four-fifths">is-four-fifths</TempCol>
     <TempCol className="">Auto</TempCol>
@@ -74,5 +74,5 @@ const TempCol = props => (
     <TempCol className="">Auto</TempCol>
     <TempCol className="">Auto</TempCol>
   </Columns>
-</BulmaStyledTheme>
+</StyledBulmaTheme>
 ```

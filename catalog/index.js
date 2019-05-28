@@ -9,7 +9,7 @@ import Comps from '../src/components/catalog'
 import Form from '../src/form/catalog'
 import README from '../README.md'
 
-const { BulmaStyledTheme } = Components
+const { StyledBulmaTheme } = Components
 
 const pages = [
   {
@@ -24,9 +24,9 @@ const pages = [
 ]
 
 ReactDOM.render(
-  <BulmaStyledTheme>
+  <StyledBulmaTheme>
     <Catalog
-      title="Bulma Styled Components"
+      title="Styled Bulma Components"
       pages={pages}
       imports={Components}
       responsiveSizes={[
@@ -40,6 +40,6 @@ ReactDOM.render(
         checkerboardPatternLight: '#fff'
       }}
     />
-  </BulmaStyledTheme>,
+  </StyledBulmaTheme>,
   document.getElementById('catalog'),
 )

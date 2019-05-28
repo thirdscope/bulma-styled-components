@@ -7,7 +7,7 @@ export default {
   output: {
     file: 'dist/index.js',
     format: 'umd',
-    name: 'BulmaStyled',
+    name: 'StyledBulma',
     globals: {
       react: 'React',
       'styled-components': 'styled',

@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { css, StyledComponentClass } from "styled-components";
+import styled, { css, StyledComponent } from "styled-components";
 import { rgba, darken } from "polished";
 import Vars from "../utilities/vars";
 import { unselectable } from "../utilities/mixins";
@@ -156,10 +156,7 @@ export const File: {
   CTA: typeof FileCTA;
   Name: typeof FileName;
   Icon: typeof FileIcon;
-} & StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
-  any
-> = styled.div`
+} & StyledComponent<"div", any, {}, never> = styled.div`
   ${unselectable}
   align-items: stretch;
   display: flex;

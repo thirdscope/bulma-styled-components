@@ -1,4 +1,4 @@
-import styled, { css, StyledComponentClass } from "styled-components";
+import styled, { css, StyledComponent } from "styled-components";
 import Vars from "../utilities/vars";
 import { Columns } from "./Columns";
 import { fromTheme } from "../utilities/functions";
@@ -31,10 +31,7 @@ function percentage(num) {
   return `${num * 100}%`;
 }
 
-export const Column: StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
-  any
-> = styled.div`
+export const Column: StyledComponent<"div", any, {}, never> = styled.div`
   display: block;
   flex-basis: 0;
   flex-grow: 1;

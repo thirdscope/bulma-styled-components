@@ -1,5 +1,5 @@
-import React from "react";
-import styled, { injectGlobal, ThemeProvider } from "styled-components";
+import * as React from "react";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import Vars from "../utilities/vars";
 import minireset from "./minireset";
 import getGeneric from "./generic";
@@ -7,6 +7,11 @@ import Helpers from "./helper";
 
 const BulmaStyledContainer = styled.div`
   ${Helpers}
+`;
+
+const GlobalStyle = createGlobalStyle<{ vars: any }>`
+${minireset}
+${props => getGeneric(props.vars)}
 `;
 
 class BulmaStyledTheme extends React.PureComponent<{ overrides: any }> {
@@ -20,10 +25,6 @@ class BulmaStyledTheme extends React.PureComponent<{ overrides: any }> {
 
   componentWillMount() {
     this.vars = Vars.getVariables(this.props.overrides);
-    return injectGlobal`
-      ${minireset}
-      ${getGeneric(this.vars)}
-    `;
   }
 
   vars = Vars.getVariables();
@@ -32,7 +33,10 @@ class BulmaStyledTheme extends React.PureComponent<{ overrides: any }> {
     const { overrides, ...props } = this.props;
     return (
       <ThemeProvider theme={this.vars}>
-        <BulmaStyledContainer {...props} />
+        <>
+          <GlobalStyle vars={this.vars} />
+          <BulmaStyledContainer {...props} />
+        </>
       </ThemeProvider>
     );
   }

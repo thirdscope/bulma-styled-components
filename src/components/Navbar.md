@@ -17,7 +17,7 @@ const NavbarItemLink = Navbar.Item.withComponent('a');
       <NavbarItemLink href="https://bulma.io/">
         Home
       </NavbarItemLink>
-      <NavbarItemLink className="has-dropdown is-hoverable">
+      <Navbar.Item className="has-dropdown is-hoverable">
         <Navbar.Link href="/documentation/overview/start/">
           Docs
         </Navbar.Link>
@@ -45,7 +45,7 @@ const NavbarItemLink = Navbar.Item.withComponent('a');
             Components
           </NavbarItemLink>
         </Navbar.Dropdown>
-      </NavbarItemLink>
+      </Navbar.Item>
     </Navbar.Start>
 
     <Navbar.End>

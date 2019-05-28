@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { StyledComponentClass } from "styled-components";
+import styled, { StyledComponent } from "styled-components";
 import Vars from "../utilities/vars";
 import { fromTheme } from "../utilities/functions";
 
@@ -21,10 +21,7 @@ const defaultProps = { theme: Vars.getVariables() };
 export const Menu: {
   List: typeof MenuList;
   Label: typeof MenuLabel;
-} & StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>,
-  any
-> = styled.aside`
+} & StyledComponent<"aside", any, {}, never> = styled.aside`
   font-size: ${fromTheme("size-normal")};
   /* Sizes */
   &.is-small {

@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity, no-duplicate-selectors */
-import styled, { css, StyledComponentClass } from "styled-components";
+import styled, { css, StyledComponent } from "styled-components";
 import { rgba, darken } from "polished";
 import Vars from "../utilities/vars";
 import { fromTheme } from "../utilities/functions";
@@ -403,10 +403,7 @@ export const Navbar: {
   Burger: typeof NavbarBurger;
   Content: typeof NavbarContent;
   Divider: typeof NavbarDivider;
-} & StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>,
-  any
-> = styled.nav`
+} & StyledComponent<"nav", any, {}, never> = styled.nav`
   background-color: ${fromTheme("navbar-background-color")};
   min-height: ${fromTheme("navbar-height")};
   position: relative;

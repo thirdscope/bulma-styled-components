@@ -1,4 +1,4 @@
-import styled, { css, StyledComponentClass } from "styled-components";
+import styled, { css, StyledComponent } from "styled-components";
 import { rgba } from "polished";
 import Vars from "../utilities/vars";
 import Content from "../elements/Content";
@@ -14,15 +14,12 @@ const MediaPartial = styled.article`
     margin-bottom: 0.75rem;
   }
 `;
+
 export const Media: {
   Left: typeof MediaLeft;
   Right: typeof MediaRight;
   Content: typeof MediaContent;
-} & StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>,
-  any,
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>
-> = styled(MediaPartial)`
+} & StyledComponent<"article", any, {}, never> = styled(MediaPartial)`
   & + ${/* sc-custom ".media" */ MediaPartial} {
     border-top: 1px solid ${({ theme }) => rgba(theme["border"], 0.5)};
     margin-top: 1rem;

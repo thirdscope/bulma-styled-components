@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { css, StyledComponentClass } from "styled-components";
+import styled, { css, StyledComponent } from "styled-components";
 import { rgba, darken, saturate, adjustHue, lighten } from "polished";
 import { touch, overlay, tablet, mobile } from "../utilities/mixins";
 import Button from "../elements/Button";
@@ -132,10 +132,7 @@ export const Hero: {
   Foot: typeof HeroFoot;
   Body: typeof HeroBody;
   Video: typeof HeroVideo;
-} & StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>,
-  any
-> = styled.section`
+} & StyledComponent<"section", any, {}, never> = styled.section`
   align-items: stretch;
   display: flex;
   flex-direction: column;
@@ -194,7 +191,7 @@ export const Hero: {
 ` as any;
 // Components
 const HeroVideo = styled.div`
-  ${overlay}
+  ${overlay as TODO}
   overflow: hidden;
   video {
     left: 50%;

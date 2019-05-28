@@ -1,4 +1,4 @@
-import { css } from "styled-components";
+import { css, ThemedStyledProps } from "styled-components";
 import { rgba } from "polished";
 import { spinAround } from "./animations";
 import { fromTheme } from "./functions";
@@ -31,7 +31,7 @@ export function fa(size, dimensions) {
 }
 
 export function hamburger(dimensions) {
-  return css`
+  return css<{ active?: boolean }>`
     cursor: pointer;
     display: block;
     height: ${dimensions};

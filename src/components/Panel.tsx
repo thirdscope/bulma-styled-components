@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { css, StyledComponentClass } from "styled-components";
+import styled, { css, StyledComponent } from "styled-components";
 import Vars from "../utilities/vars";
 import { fa } from "../utilities/mixins";
 import { fromTheme } from "../utilities/functions";
@@ -40,10 +40,7 @@ export const Panel: {
   List: typeof PanelList;
   Icon: typeof PanelIcon;
   Block: typeof PanelBlock;
-} & StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>,
-  any
-> = styled.nav`
+} & StyledComponent<"nav", any, {}, never> = styled.nav`
   font-size: ${fromTheme("size-normal")};
   &:not(:last-child) {
     margin-bottom: 1.5rem;

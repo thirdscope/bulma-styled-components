@@ -1,4 +1,4 @@
-import styled, { css, StyledComponentClass } from "styled-components";
+import styled, { css, StyledComponent } from "styled-components";
 import { block, tablet, mobile } from "../utilities/mixins";
 import { fromTheme } from "../utilities/functions";
 import Title from "../elements/Title";
@@ -72,10 +72,7 @@ export const Level: {
   Right: typeof LevelRight;
   Left: typeof LevelLeft;
   Item: typeof LevelItem;
-} & StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
-  any
-> = styled.div`
+} & StyledComponent<"div", any, {}, never> = styled.div`
   ${block}
   align-items: center;
   justify-content: space-between;

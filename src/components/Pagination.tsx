@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity, no-duplicate-selectors */
-import styled, { css, StyledComponentClass } from "styled-components";
+import styled, { css, StyledComponent } from "styled-components";
 import { rgba } from "polished";
 import Vars from "../utilities/vars";
 import { fromTheme } from "../utilities/functions";
@@ -144,10 +144,7 @@ export const Pagination: {
   Link: typeof PaginationLink;
   Ellipsis: typeof PaginationEllipsis;
   List: typeof PaginationList;
-} & StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>,
-  any
-> = styled.nav`
+} & StyledComponent<"nav", any, {}, never> = styled.nav`
   ${PaginationListShared}
   font-size: ${fromTheme("size-normal")};
   margin: ${fromTheme("pagination-margin")};

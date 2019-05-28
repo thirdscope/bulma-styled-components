@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { StyledComponentClass } from "styled-components";
+import styled, { StyledComponent } from "styled-components";
 import Vars from "../utilities/vars";
 import { Label } from "./Label";
 import { Select } from "./Select";
@@ -14,10 +14,7 @@ const defaultProps = { theme: Vars.getVariables() };
 export const Field: {
   Label: typeof FieldLabel;
   Body: typeof FieldBody;
-} & StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
-  any
-> = styled.div`
+} & StyledComponent<"div", any, {}, never> = styled.div`
   &:not(:last-child) {
     margin-bottom: 0.75rem;
   }

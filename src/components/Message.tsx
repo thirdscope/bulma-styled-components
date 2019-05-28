@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { css, StyledComponentClass } from "styled-components";
+import styled, { css, StyledComponent } from "styled-components";
 import {
   getLuminance,
   parseToHsl,
@@ -112,10 +112,7 @@ const colorClasses = props =>
 export const Message: {
   Header: typeof MessageHeader;
   Body: typeof MessageBody;
-} & StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
-  any
-> = styled.div`
+} & StyledComponent<"div", any, {}, never> = styled.div`
   ${block}
   background-color: ${fromTheme("message-background-color")};
   border-radius: ${fromTheme("message-radius")};

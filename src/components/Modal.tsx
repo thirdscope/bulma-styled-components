@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { css, StyledComponentClass } from "styled-components";
+import styled, { css, StyledComponent } from "styled-components";
 import { rgba } from "polished";
 import Vars from "../utilities/vars";
 import { fromTheme } from "../utilities/functions";
@@ -47,11 +47,8 @@ export const Modal: {
   Content: typeof ModalContent;
   Card: typeof ModalCard;
   Close: typeof ModalClose;
-} & StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
-  any
-> = styled.div`
-  ${overlay}
+} & StyledComponent<"div", any, {}, never> = styled.div`
+  ${overlay as TODO}
   align-items: center;
   display: none;
   flex-direction: column;
@@ -68,7 +65,7 @@ export const Modal: {
 Modal.defaultProps = defaultProps;
 
 export const ModalBackground = styled.div`
-  ${overlay}
+  ${overlay as TODO}
   background-color: ${fromTheme("modal-background-background-color")};
 `;
 ModalBackground.defaultProps = defaultProps;
@@ -111,10 +108,7 @@ export const ModalCard: {
   Body: typeof ModalCardBody;
   Title: typeof ModalCardTitle;
   Foot: typeof ModalCardFoot;
-} & StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
-  any
-> = styled.div`
+} & StyledComponent<"div", any, {}, never> = styled.div`
   ${ContentCardShared}
   display: flex;
   flex-direction: column;

@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { StyledComponentClass } from "styled-components";
+import styled, { StyledComponent } from "styled-components";
 import { rgba } from "polished";
 import Vars from "../utilities/vars";
 import { fromTheme } from "../utilities/functions";
@@ -36,17 +36,12 @@ export const DropdownMenu = styled.div`
 `;
 DropdownMenu.defaultProps = defaultProps;
 
-type DropdownComponentType = {
+export const Dropdown: {
   Menu: typeof DropdownMenu;
   Content: typeof DropdownContent;
   Item: typeof DropdownItem;
   Divider: typeof DropdownDivider;
-} & StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
-  any
->;
-
-export const Dropdown: DropdownComponentType = styled.div`
+} & StyledComponent<"div", any, {}, never> = styled.div`
   display: inline;
   position: relative;
   vertical-align: top;

@@ -1,5 +1,5 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { StyledComponentClass } from "styled-components";
+import styled, { StyledComponent } from "styled-components";
 import { rgba } from "polished";
 import Vars from "../utilities/vars";
 import { fromTheme } from "../utilities/functions";
@@ -31,11 +31,7 @@ export const Card: {
   Content: typeof CardContent;
   Footer: typeof CardFooter;
   Image: typeof CardImage;
-} & StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
-  any,
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>
-> = styled.div`
+} & StyledComponent<"div", any, {}, never> = styled.div`
   background-color: ${fromTheme("card-background-color")};
   box-shadow: ${fromTheme("card-shadow")};
   color: ${fromTheme("card-color")};
@@ -50,10 +46,7 @@ Card.defaultProps = defaultProps;
 export const CardHeader: {
   Title: typeof CardHeaderTitle;
   Icon: typeof CardHeaderIcon;
-} & StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>,
-  any
-> = styled.header`
+} & StyledComponent<"header", any, {}, never> = styled.header`
   background-color: ${fromTheme("card-header-background-color")};
   align-items: stretch;
   box-shadow: ${fromTheme("card-header-shadow")};
@@ -102,10 +95,7 @@ Card.Content = CardContent;
 
 export const CardFooter: {
   Item: typeof CardFooterItem;
-} & StyledComponentClass<
-  React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>,
-  any
-> = styled.footer`
+} & StyledComponent<"footer", any, {}, never> = styled.footer`
   background-color: ${fromTheme("card-footer-background-color")};
   border-top: ${fromTheme("card-footer-border-top")};
   align-items: stretch;

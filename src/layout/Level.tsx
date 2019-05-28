@@ -1,12 +1,8 @@
-import styled, { css } from 'styled-components'
-import {
-  block,
-  tablet,
-  mobile,
-} from '../utilities/mixins'
-import { fromTheme } from '../utilities/functions'
-import Title from '../elements/Title'
-import Subtitle from '../elements/Subtitle'
+import styled, { css, StyledComponentClass } from "styled-components";
+import { block, tablet, mobile } from "../utilities/mixins";
+import { fromTheme } from "../utilities/functions";
+import Title from "../elements/Title";
+import Subtitle from "../elements/Subtitle";
 
 export const LevelItem = styled.div`
   align-items: center;
@@ -15,7 +11,8 @@ export const LevelItem = styled.div`
   flex-grow: 0;
   flex-shrink: 0;
   justify-content: center;
-  ${Title}, ${Subtitle} { /* stylelint-disable-line */
+  ${Title}, ${Subtitle} {
+    /* stylelint-disable-line */
     margin-bottom: 0;
   }
 
@@ -25,13 +22,14 @@ export const LevelItem = styled.div`
       margin-bottom: 0.75rem;
     }
   `}
-`
+`;
 
 const levelShared = css`
   flex-basis: auto;
   flex-grow: 0;
   flex-shrink: 0;
-  ${LevelItem} { /* stylelint-disable-line */
+  ${LevelItem} {
+    /* stylelint-disable-line */
     /* Modifiers */
     &.is-flexible {
       flex-grow: 1;
@@ -43,7 +41,7 @@ const levelShared = css`
       }
     `}
   }
-`
+`;
 
 export const LevelRight = styled.div`
   ${levelShared}
@@ -53,7 +51,7 @@ export const LevelRight = styled.div`
   ${tablet`
     display: flex;
   `}
-`
+`;
 
 export const LevelLeft = styled.div`
   ${levelShared}
@@ -68,14 +66,21 @@ export const LevelLeft = styled.div`
   ${tablet`
     display: flex;
   `}
-  `
+`;
 
-export const Level = styled.div`
+export const Level: {
+  Right: typeof LevelRight;
+  Left: typeof LevelLeft;
+  Item: typeof LevelItem;
+} & StyledComponentClass<
+  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
+  any
+> = styled.div`
   ${block}
   align-items: center;
   justify-content: space-between;
   code {
-    border-radius: ${fromTheme('radius')}
+    border-radius: ${fromTheme("radius")}
   }
   img {
     display: inline-block;
@@ -110,7 +115,7 @@ export const Level = styled.div`
       }
     }
   `}
-`
-Level.Right = LevelRight
-Level.Left = LevelLeft
-Level.Item = LevelItem
+` as any;
+Level.Right = LevelRight;
+Level.Left = LevelLeft;
+Level.Item = LevelItem;

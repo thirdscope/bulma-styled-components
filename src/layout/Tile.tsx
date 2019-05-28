@@ -1,6 +1,6 @@
-import styled, { css } from 'styled-components'
-import { tablet } from '../utilities/mixins'
-
+import styled, { css } from "styled-components";
+import { tablet } from "../utilities/mixins";
+import { TODO } from "../utilities/typeutil";
 
 export const Tile = styled.div`
   align-items: stretch;
@@ -38,12 +38,15 @@ export const Tile = styled.div`
     &:not(.is-child) {
       display: flex;
     }
-    ${[...Array(12).keys()].reduce((acc, i) => css`
+    ${[...Array(12).keys()].reduce<TODO>(
+      (acc, i) => css`
       ${acc}
       &.is-${i + 1} {
         flex: none;
         width: ${((i + 1) / 12) * 100}%;
       }
-    `, '')}
+    `,
+      ""
+    )}
   `}
-`
+`;

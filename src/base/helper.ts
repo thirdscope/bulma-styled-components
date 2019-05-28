@@ -1,5 +1,5 @@
-import { css } from 'styled-components'
-import { clearFix, darken } from 'polished'
+import { css } from "styled-components";
+import { clearFix, darken } from "polished";
 import {
   overlay,
   mobile,
@@ -11,28 +11,23 @@ import {
   tablet_only,
   widescreen_only,
   desktop_only,
-  unselectable,
-} from '../utilities/mixins'
-import { fromTheme } from '../utilities/functions'
+  unselectable
+} from "../utilities/mixins";
+import { fromTheme } from "../utilities/functions";
+import { TODO } from "../utilities/typeutil";
 
 const alignments = {
-  centered: 'center',
-  justified: 'justify',
-  left: 'left',
-  right: 'right',
-}
-const displays = [
-  'block',
-  'flex',
-  'inline',
-  'inline-block',
-  'inline-flex',
-]
+  centered: "center",
+  justified: "justify",
+  left: "left",
+  right: "right"
+};
+const displays = ["block", "flex", "inline", "inline-block", "inline-flex"];
 
 export default css`
   /* Float */
   .is-clearfix {
-    ${clearFix()}
+    ${clearFix() as TODO}
   }
 
   .is-pulled-left {
@@ -54,7 +49,9 @@ export default css`
   }
 
   /* Typography */
-  ${({ theme }) => theme.sizes.reduce((acc, size, i) => css`
+  ${({ theme }) =>
+    theme.sizes.reduce(
+      (acc, size, i) => css`
     ${acc}
     .is-size-${i + 1} {
       font-size: ${size} !important;
@@ -89,9 +86,12 @@ export default css`
         font-size: ${size} !important;
       }
     `}
-  `, '')}
+  `,
+      ""
+    )}
 
-  ${(Object.entries(alignments)).reduce((acc, [alignment, text_align]) => css`
+  ${Object.entries(alignments).reduce<TODO>(
+    (acc, [alignment, text_align]: TODO) => css`
     ${acc}
     .has-text-${alignment} {
       text-align: ${text_align} !important;
@@ -141,7 +141,9 @@ export default css`
         text-align: ${text_align} !important;
       }
     `}
-  `, '')}
+  `,
+    ""
+  )}
 
   .is-capitalized {
     text-transform: capitalize !important;
@@ -159,7 +161,9 @@ export default css`
     font-style: italic !important;
   }
 
-  ${({ theme }) => Object.entries(theme['colors']).reduce((acc, [name, [color]]) => css`
+  ${({ theme }) =>
+    Object.entries(theme["colors"]).reduce<TODO>(
+      (acc, [name, [color]]: TODO) => css`
     ${acc}
     .has-text-${name} {
       color: ${color} !important;
@@ -173,8 +177,12 @@ export default css`
     .has-background-${name} {
       background-color: ${color} !important;
     }
-  `, '')}
-  ${({ theme }) => Object.entries(theme['shades']).reduce((acc, [name, shade]) => css`
+  `,
+      ""
+    )}
+  ${({ theme }) =>
+    Object.entries(theme["shades"]).reduce<TODO>(
+      (acc, [name, shade]: TODO) => css`
     ${acc}
     .has-text-${name} {
       color: ${shade} !important;
@@ -182,23 +190,26 @@ export default css`
     .has-background-${name} {
       background-color: ${shade} !important;
     }
-  `, '')}
+  `,
+      ""
+    )}
 
   .has-text-weight-light {
-    font-weight: ${fromTheme('weight-light')} !important;
+    font-weight: ${fromTheme("weight-light")} !important;
   }
   .has-text-weight-normal {
-    font-weight: ${fromTheme('weight-normal')} !important;
+    font-weight: ${fromTheme("weight-normal")} !important;
   }
   .has-text-weight-semibold {
-    font-weight: ${fromTheme('weight-semibold')} !important;
+    font-weight: ${fromTheme("weight-semibold")} !important;
   }
   .has-text-weight-bold {
-    font-weight: ${fromTheme('weight-bold')} !important;
+    font-weight: ${fromTheme("weight-bold")} !important;
   }
 
   /* Visibility */
-  ${displays.reduce((acc, display) => css`
+  ${displays.reduce<TODO>(
+    (acc, display: TODO) => css`
     ${acc}
     .is-${display} {
       display: ${display} !important;
@@ -248,7 +259,9 @@ export default css`
         display: ${display} !important;
       }
     `}
-  `, '')}
+  `,
+    ""
+  )}
 
   .is-hidden {
     display: none !important;
@@ -387,4 +400,4 @@ export default css`
   .is-unselectable {
     ${unselectable}
   }
-`
+`;

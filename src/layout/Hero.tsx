@@ -1,54 +1,70 @@
 /* stylelint-disable no-descending-specificity */
-import styled, { css } from 'styled-components'
-import { rgba, darken, saturate, adjustHue, lighten } from 'polished'
-import { touch, overlay, tablet, mobile } from '../utilities/mixins'
-import Button from '../elements/Button'
-import Tag from '../elements/Tag'
-import Title from '../elements/Title'
-import Subtitle from '../elements/Subtitle'
-import { Tabs } from '../components/Tabs'
-import { Dropdown } from '../components/Dropdown'
-import { Navbar, NavbarItem, NavbarLink, NavbarMenu } from '../components/Navbar'
-import { Container } from './Container'
+import styled, { css, StyledComponentClass } from "styled-components";
+import { rgba, darken, saturate, adjustHue, lighten } from "polished";
+import { touch, overlay, tablet, mobile } from "../utilities/mixins";
+import Button from "../elements/Button";
+import Tag from "../elements/Tag";
+import Title from "../elements/Title";
+import Subtitle from "../elements/Subtitle";
+import { Tabs } from "../components/Tabs";
+import { Dropdown } from "../components/Dropdown";
+import {
+  Navbar,
+  NavbarItem,
+  NavbarLink,
+  NavbarMenu
+} from "../components/Navbar";
+import { Container } from "./Container";
+import { TODO } from "../utilities/typeutil";
 
-const heroColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((acc, [name, [color, color_invert]]) => {
-  const gradient_top_left = darken(0.1, saturate(0.1, adjustHue(350, color)))
-  const gradient_bottom_right = lighten(0.05, saturate(0.05, adjustHue(10, color)))
-  return css`
+const heroColorClasses = ({ theme }) =>
+  Object.entries(theme["colors"]).reduce<TODO>(
+    (acc, [name, [color, color_invert]]: TODO) => {
+      const gradient_top_left = darken(
+        0.1,
+        saturate(0.1, adjustHue(350, color))
+      );
+      const gradient_bottom_right = lighten(
+        0.05,
+        saturate(0.05, adjustHue(10, color))
+      );
+      return css`
     ${acc}
-    &.is-${/* sc-custom 'blue' */name} {
+    &.is-${/* sc-custom 'blue' */ name} {
       background-color: ${color};
       color: ${color_invert};
-      a:not(${/* sc-custom '.button' */Button}):not(${/* sc-custom '.dropdown-item' */Dropdown.Item}):not(${/* sc-custom '.tag' */Tag}),
+      a:not(${/* sc-custom '.button' */ Button}):not(${
+        /* sc-custom '.dropdown-item' */ Dropdown.Item
+      }):not(${/* sc-custom '.tag' */ Tag}),
       strong {
         color: inherit;
       }
-      ${/* sc-custom '.title' */Title} {
+      ${/* sc-custom '.title' */ Title} {
         color: ${color_invert};
       }
-      ${/* sc-custom '.subtitle' */Subtitle} {
+      ${/* sc-custom '.subtitle' */ Subtitle} {
         color: ${rgba(color_invert, 0.9)};
-        a:not(${/* sc-selector */Button}),
+        a:not(${/* sc-selector */ Button}),
         strong {
           color: ${color_invert};
         }
       }
-      ${/* sc-custom '.navbar-menu' */NavbarMenu} {
+      ${/* sc-custom '.navbar-menu' */ NavbarMenu} {
         ${touch`
           background-color: ${color};
         `}
       }
-      ${/* sc-custom '.navbar-item' */NavbarItem},
-      ${/* sc-custom '.navbar-link' */NavbarLink} {
+      ${/* sc-custom '.navbar-item' */ NavbarItem},
+      ${/* sc-custom '.navbar-link' */ NavbarLink} {
         color: ${rgba(color_invert, 0.7)};
       }
-      a${/* sc-custom '.navbar-link' */NavbarItem},
-      ${/* sc-selector */NavbarLink}:hover,
-      ${/* sc-selector */NavbarLink}.is-active {
+      a${/* sc-custom '.navbar-link' */ NavbarItem},
+      ${/* sc-selector */ NavbarLink}:hover,
+      ${/* sc-selector */ NavbarLink}.is-active {
         background-color: ${darken(0.05, color)};
         color: ${color_invert};
       }
-      ${/* sc-custom '.tabs' */Tabs} {
+      ${/* sc-custom '.tabs' */ Tabs} {
         a {
           color: ${color_invert};
           opacity: 0.9;
@@ -60,13 +76,13 @@ const heroColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((
           opacity: 1;
         }
       }
-      ${/* sc-custom '.tabs' */Tabs}.is-boxed,
-      ${/* sc-custom '.tabs' */Tabs}.is-toggle {
+      ${/* sc-custom '.tabs' */ Tabs}.is-boxed,
+      ${/* sc-custom '.tabs' */ Tabs}.is-toggle {
         a {
           color: ${color_invert};
         }
         a:hover {
-          background-color: ${rgba(theme['black'], 0.1)};
+          background-color: ${rgba(theme["black"], 0.1)};
         }
         li.is-active a,
         li.is-active a:hover {
@@ -98,25 +114,36 @@ const heroColorClasses = ({ theme }) => Object.entries(theme['colors']).reduce((
           .nav-item
             border-top-color: rgba($color-invert, 0.2) */
     }
-  `
-}, '')
+  `;
+    },
+    ""
+  );
 
 const HeroBody = styled.div`
   flex-grow: 1;
   flex-shrink: 0;
   padding: 3rem 1.5rem;
-`
+`;
 
 // Main container
-export const Hero = styled.section`
+export const Hero: {
+  Buttons: typeof HeroButtons;
+  Head: typeof HeroHead;
+  Foot: typeof HeroFoot;
+  Body: typeof HeroBody;
+  Video: typeof HeroVideo;
+} & StyledComponentClass<
+  React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>,
+  any
+> = styled.section`
   align-items: stretch;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  ${/* sc-custom '.navbar' */Navbar} {
+  ${/* sc-custom '.navbar' */ Navbar} {
     background: none;
   }
-  ${/* sc-custom '.tabs' */Tabs} {
+  ${/* sc-custom '.tabs' */ Tabs} {
     ul {
       border-bottom: none;
     }
@@ -126,7 +153,7 @@ export const Hero = styled.section`
 
   /* Sizes */
   &.is-small {
-    ${/* sc-selector */HeroBody} {
+    ${/* sc-selector */ HeroBody} {
       padding-bottom: 1.5rem;
       padding-top: 1.5rem;
     }
@@ -149,11 +176,11 @@ export const Hero = styled.section`
   }
   &.is-halfheight,
   &.is-fullheight {
-    ${/* sc-selector */HeroBody} {
+    ${/* sc-selector */ HeroBody} {
       align-items: center;
       display: flex;
     }
-    ${/* sc-selector */HeroBody} > ${/* sc-selector */Container} {
+    ${/* sc-selector */ HeroBody} > ${/* sc-selector */ Container} {
       flex-grow: 1;
       flex-shrink: 1;
     }
@@ -164,7 +191,7 @@ export const Hero = styled.section`
   &.is-fullheight {
     min-height: 100vh;
   }
-`
+` as any;
 // Components
 const HeroVideo = styled.div`
   ${overlay}
@@ -185,8 +212,8 @@ const HeroVideo = styled.div`
   ${mobile`
     display: none;
   `}
-`
-Hero.Video = HeroVideo
+`;
+Hero.Video = HeroVideo;
 
 const HeroButtons = styled.div`
   margin-top: 1.5rem;
@@ -206,21 +233,20 @@ const HeroButtons = styled.div`
       margin-right: 1.5rem;
     }
   `}
-`
+`;
 
-Hero.Buttons = HeroButtons
+Hero.Buttons = HeroButtons;
 
 // Containers
 const HeroHead = styled.div`
   flex-grow: 0;
   flex-shrink: 0;
-`
-Hero.Head = HeroHead
+`;
+Hero.Head = HeroHead;
 
 const HeroFoot = styled.div`
   flex-grow: 0;
   flex-shrink: 0;
-`
-Hero.Foot = HeroFoot
-Hero.Body = HeroBody
-
+`;
+Hero.Foot = HeroFoot;
+Hero.Body = HeroBody;

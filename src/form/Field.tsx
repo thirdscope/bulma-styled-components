@@ -1,20 +1,23 @@
 /* stylelint-disable no-descending-specificity */
-import styled from 'styled-components'
-import Vars from '../utilities/vars'
-import { Label } from './Label'
-import { Select } from './Select'
-import { Input } from './Input'
-import { Control } from './Control'
-import Button from '../elements/Button'
-import {
-  tablet,
-  mobile,
-} from '../utilities/mixins'
-import { fromTheme } from '../utilities/functions'
+import styled, { StyledComponentClass } from "styled-components";
+import Vars from "../utilities/vars";
+import { Label } from "./Label";
+import { Select } from "./Select";
+import { Input } from "./Input";
+import { Control } from "./Control";
+import Button from "../elements/Button";
+import { tablet, mobile } from "../utilities/mixins";
+import { fromTheme } from "../utilities/functions";
 
-const defaultProps = { theme: Vars.getVariables() }
+const defaultProps = { theme: Vars.getVariables() };
 
-export const Field = styled.div`
+export const Field: {
+  Label: typeof FieldLabel;
+  Body: typeof FieldBody;
+} & StyledComponentClass<
+  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
+  any
+> = styled.div`
   &:not(:last-child) {
     margin-bottom: 0.75rem;
   }
@@ -22,36 +25,36 @@ export const Field = styled.div`
   &.has-addons {
     display: flex;
     justify-content: flex-start;
-    ${/* sc-custom '.control' */Control} {
+    ${/* sc-custom '.control' */ Control} {
       &:not(:last-child) {
         margin-right: -1px;
       }
       &:not(:first-child):not(:last-child) {
-        ${/* sc-custom '.button' */Button},
-        ${/* sc-custom '.input' */Input},
-        ${/* sc-custom '.select' */Select} select {
+        ${/* sc-custom '.button' */ Button},
+        ${/* sc-custom '.input' */ Input},
+        ${/* sc-custom '.select' */ Select} select {
           border-radius: 0;
         }
       }
       &:first-child {
-        ${/* sc-custom '.button' */Button},
-        ${/* sc-custom '.input' */Input},
-        ${/* sc-custom '.select' */Select} select {
+        ${/* sc-custom '.button' */ Button},
+        ${/* sc-custom '.input' */ Input},
+        ${/* sc-custom '.select' */ Select} select {
           border-bottom-right-radius: 0;
           border-top-right-radius: 0;
         }
       }
       &:last-child {
-        ${/* sc-custom '.button' */Button},
-        ${/* sc-custom '.input' */Input},
-        ${/* sc-custom '.select' */Select} select {
+        ${/* sc-custom '.button' */ Button},
+        ${/* sc-custom '.input' */ Input},
+        ${/* sc-custom '.select' */ Select} select {
           border-bottom-left-radius: 0;
           border-top-left-radius: 0;
         }
       }
-      ${/* sc-custom '.button' */Button},
-      ${/* sc-custom '.input' */Input},
-      ${/* sc-custom '.select' */Select} select {
+      ${/* sc-custom '.button' */ Button},
+      ${/* sc-custom '.input' */ Input},
+      ${/* sc-custom '.select' */ Select} select {
         &:hover,
         &.is-hovered {
           z-index: 2;
@@ -77,7 +80,7 @@ export const Field = styled.div`
       justify-content: flex-end;
     }
     &.has-addons-fullwidth {
-      ${/* sc-custom '.control' */Control} {
+      ${/* sc-custom '.control' */ Control} {
         flex-grow: 1;
         flex-shrink: 0;
       }
@@ -86,7 +89,7 @@ export const Field = styled.div`
   &.is-grouped {
     display: flex;
     justify-content: flex-start;
-    & > ${/* sc-custom '.control' */Control} {
+    & > ${/* sc-custom '.control' */ Control} {
       flex-shrink: 0;
       &:not(:last-child) {
         margin-bottom: 0;
@@ -105,7 +108,7 @@ export const Field = styled.div`
     }
     &.is-grouped-multiline {
       flex-wrap: wrap;
-      & > ${/* sc-custom '.control' */Control} {
+      & > ${/* sc-custom '.control' */ Control} {
         &:last-child,
         &:not(:last-child) {
           margin-bottom: 0.75rem;
@@ -125,11 +128,11 @@ export const Field = styled.div`
       display: flex;
     `}
   }
-`
-Field.defaultProps = defaultProps
+` as any;
+Field.defaultProps = defaultProps;
 
 export const FieldLabel = styled.div`
-  ${/* sc-custom '.label' */Label} {
+  ${/* sc-custom '.label' */ Label} {
     font-size: inherit;
   }
   ${mobile`
@@ -142,26 +145,26 @@ export const FieldLabel = styled.div`
     margin-right: 1.5rem;
     text-align: right;
     &.is-small {
-      font-size: ${fromTheme('size-small')};
+      font-size: ${fromTheme("size-small")};
       padding-top: 0.375em;
     }
     &.is-normal {
       padding-top: 0.375em;
     }
     &.is-medium {
-      font-size: ${fromTheme('size-medium')};
+      font-size: ${fromTheme("size-medium")};
       padding-top: 0.375em;
     }
     &.is-large {
-      font-size: ${fromTheme('size-large')};
+      font-size: ${fromTheme("size-large")};
       padding-top: 0.375em;
     }
   `}
-`
-FieldLabel.defaultProps = defaultProps
+`;
+FieldLabel.defaultProps = defaultProps;
 
 export const FieldBody = styled.div`
-  ${/* sc-custom '.field' */Field} ${/* sc-custom '.field' */Field} {
+  ${/* sc-custom '.field' */ Field} ${/* sc-custom '.field' */ Field} {
     margin-bottom: 0;
   }
   ${tablet`
@@ -169,10 +172,10 @@ export const FieldBody = styled.div`
     flex-basis: 0;
     flex-grow: 5;
     flex-shrink: 1;
-    ${/* sc-custom '.field' */Field} {
+    ${/* sc-custom '.field' */ Field} {
       margin-bottom: 0;
     }
-    & > ${/* sc-custom '.field' */Field} {
+    & > ${/* sc-custom '.field' */ Field} {
       flex-shrink: 1;
       &:not(.is-narrow) {
         flex-grow: 1;
@@ -182,8 +185,8 @@ export const FieldBody = styled.div`
       }
     }
   `}
-`
-FieldBody.defaultProps = defaultProps
+`;
+FieldBody.defaultProps = defaultProps;
 
-Field.Label = FieldLabel
-Field.Body = FieldBody
+Field.Label = FieldLabel;
+Field.Body = FieldBody;

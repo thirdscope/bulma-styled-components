@@ -1,38 +1,45 @@
-import styled, { css } from 'styled-components'
-import Vars from '../utilities/vars'
-import { Columns } from './Columns'
-import { fromTheme } from '../utilities/functions'
+import styled, { css, StyledComponentClass } from "styled-components";
+import Vars from "../utilities/vars";
+import { Columns } from "./Columns";
+import { fromTheme } from "../utilities/functions";
 import {
   mobile,
   tablet,
   touch,
   desktop,
   widescreen,
-  fullhd,
-} from '../utilities/mixins'
+  fullhd
+} from "../utilities/mixins";
+import { TODO } from "../utilities/typeutil";
 
 Vars.addDerivedDefault(() => ({
-  'column-gap': '0.75rem',
-}))
+  "column-gap": "0.75rem"
+}));
 
-const onetotwelve = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+const onetotwelve = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 function map1to12(onEach) {
-  return onetotwelve.reduce((acc, num) => css`
-    ${acc}
-    ${onEach(num)}
-  `, '')
+  return onetotwelve.reduce<TODO>(
+    (acc, num) => css`
+      ${acc}
+      ${onEach(num)}
+    `,
+    ""
+  );
 }
 
 function percentage(num) {
-  return `${num * 100}%`
+  return `${num * 100}%`;
 }
 
-export const Column = styled.div`
+export const Column: StyledComponentClass<
+  React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>,
+  any
+> = styled.div`
   display: block;
   flex-basis: 0;
   flex-grow: 1;
   flex-shrink: 1;
-  padding: ${fromTheme('column-gap')};
+  padding: ${fromTheme("column-gap")};
   ${Columns}.is-gapless > & {
     margin: 0;
     padding: 0;
@@ -107,7 +114,8 @@ export const Column = styled.div`
   ${Columns}.is-mobile > &.is-offset-four-fifths {
     margin-left: 80%;
   }
-  ${map1to12(i => css`
+  ${map1to12(
+    i => css`
     ${Columns}.is-mobile > &.is-${i} {
       flex: none;
       width: ${percentage(i / 12)};
@@ -115,7 +123,8 @@ export const Column = styled.div`
     ${Columns}.is-mobile > &.is-offset-${i} {
       margin-left: ${percentage(i / 12)};
     }
-  `)}
+  `
+  )}
   ${mobile`
     &.is-narrow-mobile {
       flex: none;
@@ -187,15 +196,17 @@ export const Column = styled.div`
     &.is-offset-four-fifths-mobile {
       margin-left: 80%;
     }
-    ${map1to12(i => css`
-      &.is-${i}-mobile {
-        flex: none;
-        width: ${percentage(i / 12)};
-      }
-      &.is-offset-${i}-mobile {
-        margin-left: ${percentage(i / 12)};
-      }
-    `)}
+    ${map1to12(
+      i => css`
+        &.is-${i}-mobile {
+          flex: none;
+          width: ${percentage(i / 12)};
+        }
+        &.is-offset-${i}-mobile {
+          margin-left: ${percentage(i / 12)};
+        }
+      `
+    )}
   `}
   ${tablet`
     &.is-narrow,
@@ -288,17 +299,17 @@ export const Column = styled.div`
     &.is-offset-four-fifths-tablet {
       margin-left: 80%;
     }
-    ${map1to12(i => css`
-      &.is-${i},
-      &.is-${i}-tablet {
-        flex: none;
-        width: ${percentage(i / 12)};
-      }
-      &.is-offset-${i},
-      &.is-offset-${i}-tablet {
-        margin-left: ${percentage(i / 12)};
-      }
-    `)}
+    ${map1to12(
+      i => css`
+        &.is-${i}, &.is-${i}-tablet {
+          flex: none;
+          width: ${percentage(i / 12)};
+        }
+        &.is-offset-${i}, &.is-offset-${i}-tablet {
+          margin-left: ${percentage(i / 12)};
+        }
+      `
+    )}
   `}
   ${touch`
     &.is-narrow-touch {
@@ -371,15 +382,17 @@ export const Column = styled.div`
     &.is-offset-four-fifths-touch {
       margin-left: 80%;
     }
-    ${map1to12(i => css`
-      &.is-${i}-touch {
-        flex: none;
-        width: ${percentage(i / 12)};
-      }
-      &.is-offset-${i}-touch {
-        margin-left: ${percentage(i / 12)};
-      }
-    `)}
+    ${map1to12(
+      i => css`
+        &.is-${i}-touch {
+          flex: none;
+          width: ${percentage(i / 12)};
+        }
+        &.is-offset-${i}-touch {
+          margin-left: ${percentage(i / 12)};
+        }
+      `
+    )}
   `}
   ${desktop`
     &.is-narrow-desktop {
@@ -452,15 +465,17 @@ export const Column = styled.div`
     &.is-offset-four-fifths-desktop {
       margin-left: 80%;
     }
-    ${map1to12(i => css`
-      &.is-${i}-desktop {
-        flex: none;
-        width: ${percentage(i / 12)};
-      }
-      &.is-offset-${i}-desktop {
-        margin-left: ${percentage(i / 12)};
-      }
-    `)}
+    ${map1to12(
+      i => css`
+        &.is-${i}-desktop {
+          flex: none;
+          width: ${percentage(i / 12)};
+        }
+        &.is-offset-${i}-desktop {
+          margin-left: ${percentage(i / 12)};
+        }
+      `
+    )}
   `}
   ${widescreen`
     &.is-narrow-widescreen {
@@ -533,15 +548,17 @@ export const Column = styled.div`
     &.is-offset-four-fifths-widescreen {
       margin-left: 80%;
     }
-    ${map1to12(i => css`
-      &.is-${i}-widescreen {
-        flex: none;
-        width: ${percentage(i / 12)};
-      }
-      &.is-offset-${i}-widescreen {
-        margin-left: ${percentage(i / 12)};
-      }
-    `)}
+    ${map1to12(
+      i => css`
+        &.is-${i}-widescreen {
+          flex: none;
+          width: ${percentage(i / 12)};
+        }
+        &.is-offset-${i}-widescreen {
+          margin-left: ${percentage(i / 12)};
+        }
+      `
+    )}
   `}
   ${fullhd`
     &.is-narrow-fullhd {
@@ -614,15 +631,18 @@ export const Column = styled.div`
     &.is-offset-four-fifths-fullhd {
       margin-left: 80%;
     }
-    ${map1to12(i => css`
-      &.is-${i}-fullhd {
-        flex: none;
-        width: ${percentage(i / 12)};
-      }
-      &.is-offset-${i}-fullhd {
-        margin-left: ${percentage(i / 12)};
-      }
-    `)}
+    ${map1to12(
+      i => css`
+        &.is-${i}-fullhd {
+          flex: none;
+          width: ${percentage(i / 12)};
+        }
+        &.is-offset-${i}-fullhd {
+          margin-left: ${percentage(i / 12)};
+        }
+      `
+    )}
   `}
-`
-Column.defaultProps = { theme: Vars.getVariables() }
+`;
+
+Column.defaultProps = { theme: Vars.getVariables() };
